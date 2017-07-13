@@ -29,7 +29,7 @@ class ViewTransformViewController: UIViewController {
         let constraintHeight = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 0.15, constant: 0.0)
         
         let constraintX = NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: -50.0)
-        let constraintY = NSLayoutConstraint(item: view, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 0.1, constant: view.tag == 1 ? barHeight - 100.0 : barHeight + 100.0)
+        let constraintY = NSLayoutConstraint(item: view, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 0.1, constant: view.tag == 1 ? barHeight + 100.0 : barHeight + 100.0)
         
         self.view.addConstraints([constraintWidth, constraintHeight, constraintX, constraintY])
         
@@ -181,18 +181,47 @@ class ViewTransformViewController: UIViewController {
     
     
     @IBAction func trans6(_ sender: Any) {
-   
+        printFrameForView(self.firstView)
+        printFrameForView(self.secondView)
+        UIView.animate(withDuration: 5.0) {
+            self.firstView.transform = self.firstView.transform.scaledBy(x: 0.2, y: 0.2).translatedBy(x: 100.0, y: 100.0)
+            self.secondView.transform = self.secondView.transform.translatedBy(x: 100.0, y: 100.0).scaledBy(x: 0.2, y: 0.2)
+            self.printFrameForView(self.firstView)
+            self.printFrameForView(self.secondView)
+        }
+        
     }
     
+    func printFrameForView(_ view: UIView) -> Void {
+        let rect = view.frame
+        let centerX = rect.origin.x + rect.width/2
+        let centerY = rect.origin.y + rect.height/2
+        print("\(view.tag)   center:\(centerX),\(centerY)")
+    }
     
 
     @IBAction func trans7(_ sender: Any) {
-
+        
+        printFrameForView(self.firstView)
+        printFrameForView(self.secondView)
+        UIView.animate(withDuration: 5.0) {
+            self.firstView.transform = self.firstView.transform.scaledBy(x: 0.5, y: 0.5).translatedBy(x: 100.0, y: 100.0).scaledBy(x: 0.4, y: 0.4).translatedBy(x: 100.0, y: 100.0)
+            self.secondView.transform = self.secondView.transform.scaledBy(x: 0.2, y: 0.2).translatedBy(x: 200.0, y: 200.0)
+            self.printFrameForView(self.firstView)
+            self.printFrameForView(self.secondView)
+        }
     }
     
     
     @IBAction func trans8(_ sender: Any) {
-
+        printFrameForView(self.firstView)
+        printFrameForView(self.secondView)
+        UIView.animate(withDuration: 5.0) {
+            self.firstView.transform = self.firstView.transform.scaledBy(x: 0.5, y: 0.5).translatedBy(x: 100.0, y: 100.0).scaledBy(x: 0.4, y: 0.4).translatedBy(x: 100.0, y: 100.0).scaledBy(x: 0.5, y: 0.5).translatedBy(x: 100.0, y: 100.0)
+            self.secondView.transform = self.secondView.transform.scaledBy(x: 0.1, y: 0.1).translatedBy(x: 300.0, y: 300.0)
+            self.printFrameForView(self.firstView)
+            self.printFrameForView(self.secondView)
+        }
     }
     
     
