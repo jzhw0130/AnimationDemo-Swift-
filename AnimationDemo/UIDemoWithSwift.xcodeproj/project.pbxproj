@@ -13,6 +13,7 @@
 		3F48310A1F15EE2200784D6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F4831091F15EE2200784D6C /* Assets.xcassets */; };
 		3F48310D1F15EE2200784D6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F48310B1F15EE2200784D6C /* LaunchScreen.storyboard */; };
 		3F4831151F15EF7600784D6C /* ViewTransformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4831141F15EF7600784D6C /* ViewTransformViewController.swift */; };
+		3F4831171F1858EC00784D6C /* CoreAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4831161F1858EC00784D6C /* CoreAnimationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3F48310C1F15EE2200784D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F48310E1F15EE2200784D6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F4831141F15EF7600784D6C /* ViewTransformViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTransformViewController.swift; sourceTree = "<group>"; };
+		3F4831161F1858EC00784D6C /* CoreAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreAnimationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				3F48310B1F15EE2200784D6C /* LaunchScreen.storyboard */,
 				3F48310E1F15EE2200784D6C /* Info.plist */,
 				3F4831141F15EF7600784D6C /* ViewTransformViewController.swift */,
+				3F4831161F1858EC00784D6C /* CoreAnimationViewController.swift */,
 			);
 			path = UIDemoWithSwift;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4831171F1858EC00784D6C /* CoreAnimationViewController.swift in Sources */,
 				3F4831151F15EF7600784D6C /* ViewTransformViewController.swift in Sources */,
 				3F4831051F15EE2200784D6C /* ViewController.swift in Sources */,
 				3F4831031F15EE2200784D6C /* AppDelegate.swift in Sources */,
@@ -306,6 +310,7 @@
 				3F4831131F15EE2200784D6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

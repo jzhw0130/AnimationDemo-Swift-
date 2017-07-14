@@ -140,13 +140,13 @@ class ViewTransformViewController: UIViewController {
             switch nub {
             case 0..<50:
                 self.firstView.transform = CGAffineTransform(translationX: CGFloat(totalXY), y: CGFloat(totalXY)).scaledBy(x: CGFloat(totalScale), y: CGFloat(totalScale)).rotated(by: CGFloat(totalAngle))
-                self.secondView.transform = CGAffineTransform(translationX: CGFloat(totalXY), y: CGFloat(totalXY)).scaledBy(x: CGFloat(totalScale), y: CGFloat(totalScale)).rotated(by: CGFloat(totalAngle))
+                self.secondView.transform = CGAffineTransform(translationX: CGFloat(totalXY), y: CGFloat(totalXY)).scaledBy(x: CGFloat(totalScale), y: CGFloat(totalScale*0.6)).rotated(by: CGFloat(totalAngle))
                 totalAngle += stepAngle
                 totalXY += stepXY
                 totalScale *= stepScale
             case 50..<100:
                 self.firstView.transform = CGAffineTransform(translationX: CGFloat(totalXY), y: CGFloat(totalXY)).scaledBy(x: CGFloat(totalScale), y: CGFloat(totalScale)).rotated(by: CGFloat(totalAngle))
-                self.secondView.transform = CGAffineTransform(translationX: CGFloat(totalXY), y: CGFloat(totalXY)).scaledBy(x: CGFloat(totalScale), y: CGFloat(totalScale)).rotated(by: CGFloat(totalAngle))
+                self.secondView.transform = CGAffineTransform(translationX: CGFloat(totalXY), y: CGFloat(totalXY)).scaledBy(x: CGFloat(totalScale), y: CGFloat(totalScale*0.6)).rotated(by: CGFloat(totalAngle))
                 totalAngle -= stepAngle
                 totalXY -= stepXY
                 totalScale /= stepScale
