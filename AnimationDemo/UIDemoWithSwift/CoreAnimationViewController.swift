@@ -54,43 +54,51 @@ class CoreAnimationViewController: UIViewController {
     //contents                  CGImage
     @IBAction func ca1(_ sender: Any) {
         
-        let borderAnimation = aniamtionWithPath("borderWidth",  fromValue: nil, toValue: 5.0)
-        let xAnimation = aniamtionWithPath("position.x", fromValue: nil, toValue: 115.0)
-        let yAnimation = aniamtionWithPath("position.y", fromValue: nil, toValue: 175.0)
-        let opacityAnimation = aniamtionWithPath("opacity", fromValue: nil, toValue: 0.4)
+        let borderAnimation = baseAniamtionWithPath("borderWidth",  fromValue: nil, toValue: 5.0)
+        let xAnimation = baseAniamtionWithPath("position.x", fromValue: nil, toValue: 115.0)
+        let yAnimation = baseAniamtionWithPath("position.y", fromValue: nil, toValue: 175.0)
+        let opacityAnimation = baseAniamtionWithPath("opacity", fromValue: nil, toValue: 0.4)
         
         runAniamtion(animation: borderAnimation, xAnimation, yAnimation, opacityAnimation)
     }
 
     @IBAction func ca2(_ sender: Any) {
-        let xAnimation = aniamtionWithPath("transform.translation.x",  fromValue: nil, toValue: 50.0)
-        let yAnimation = aniamtionWithPath("transform.translation.y", fromValue: nil, toValue: -100.0)
-        let xScaleAnimation = aniamtionWithPath("transform.scale.x",  fromValue: nil, toValue: 0.8)
-        let yScaleAnimation = aniamtionWithPath("transform.scale.y", fromValue: nil, toValue: 0.8)
-        let conerAnimation = aniamtionWithPath("cornerRadius", fromValue: nil, toValue: 40.0)
-        let xRotationAnimation = aniamtionWithPath("transform.rotation.x",  fromValue: nil, toValue: Float.pi/3)
-        let yRotationAnimation = aniamtionWithPath("transform.rotation.y",  fromValue: nil, toValue: Float.pi/6)
+        let xAnimation = baseAniamtionWithPath("transform.translation.x",  fromValue: nil, toValue: 50.0)
+        let yAnimation = baseAniamtionWithPath("transform.translation.y", fromValue: nil, toValue: -100.0)
+        let xScaleAnimation = baseAniamtionWithPath("transform.scale.x",  fromValue: nil, toValue: 0.8)
+        let yScaleAnimation = baseAniamtionWithPath("transform.scale.y", fromValue: nil, toValue: 0.8)
+        let conerAnimation = baseAniamtionWithPath("cornerRadius", fromValue: nil, toValue: 40.0)
+        let xRotationAnimation = baseAniamtionWithPath("transform.rotation.x",  fromValue: nil, toValue: Float.pi/3)
+        let yRotationAnimation = baseAniamtionWithPath("transform.rotation.y",  fromValue: nil, toValue: Float.pi/6)
         
         runAniamtion(animation:  xAnimation, yAnimation, xScaleAnimation, yScaleAnimation, conerAnimation, xRotationAnimation, yRotationAnimation)
     }
 
     @IBAction func ca3(_ sender: Any) {
-        let xRotationAnimation = aniamtionWithPath("transform.rotation",  fromValue: -Float.pi/3, toValue: Float.pi/3)
-        let xScaleAnimation = aniamtionWithPath("transform.scale",  fromValue: nil, toValue: 0.4)
+        let xRotationAnimation = baseAniamtionWithPath("transform.rotation",  fromValue: -Float.pi/3, toValue: Float.pi/3)
+        let xScaleAnimation = baseAniamtionWithPath("transform.scale",  fromValue: nil, toValue: 0.4)
         runRepeatAniamtion(animation:xRotationAnimation,  xScaleAnimation)
     }
     
     @IBAction func ca4(_ sender: Any) {
-        
+        let xRotationAnimation = baseAniamtionWithPath("transform.rotation",  fromValue: 0, toValue: Float.pi * 2)
+        runRepeatAniamtion(animation:xRotationAnimation)
     }
     
     
     @IBAction func ca5(_ sender: Any) {
+        let frameAnimation = frameAnimationWithPoints(keyPath: "position", point: CGPoint(x: 150, y: 150), CGPoint(x: 50, y: 200), CGPoint(x: 200, y: 300), CGPoint(x: 150, y: 250))
+        let xRotationAnimation = baseAniamtionWithPath("transform.rotation",  fromValue: 0, toValue: Float.pi * 20)
         
+        runAniamtion(animation: frameAnimation, xRotationAnimation)
     }
     
     @IBAction func ca6(_ sender: Any) {
+        let path = CGMutablePath()
+        path.addEllipse(in: CGRect(x: 100, y: 200, width: 100, height: 100))
+        let frameAnimation = frameAnimationWithPath(keyPath: "position", path: path as CGPath)
         
+        runRepeatAniamtion(animation: frameAnimation)
     }
     
     @IBAction func ca7(_ sender: Any) {
@@ -100,7 +108,7 @@ class CoreAnimationViewController: UIViewController {
     }
     
     
-    func aniamtionWithPath(_ keyPath: String, fromValue: Any?, toValue: Any) -> CAAnimation {
+    func baseAniamtionWithPath(_ keyPath: String, fromValue: Any?, toValue: Any) -> CAAnimation {
         
         let animation = CABasicAnimation(keyPath: keyPath)
         
@@ -109,6 +117,25 @@ class CoreAnimationViewController: UIViewController {
         
         return animation
     }
+    
+    func frameAnimationWithPoints(keyPath: String, point: CGPoint...) -> CAAnimation {
+        let animation = CAKeyframeAnimation(keyPath: keyPath)
+        
+        animation.values = point
+        animation.calculationMode = kCAAnimationPaced
+        
+        return animation
+    }
+    
+    func frameAnimationWithPath(keyPath: String, path: CGPath) -> CAAnimation {
+        let animation = CAKeyframeAnimation(keyPath: keyPath)
+        
+        animation.path = path
+        animation.calculationMode = kCAAnimationPaced
+        
+        return animation
+    }
+    
     
     func runAniamtion(duration: Double = 2, animation: CAAnimation...) -> Void {
         
@@ -119,17 +146,18 @@ class CoreAnimationViewController: UIViewController {
         animateGroup.isRemovedOnCompletion = false
         animateGroup.fillMode = kCAFillModeForwards
         
-        bkView.layer.add(animateGroup, forKey: nil)
+        hatImage.layer.add(animateGroup, forKey: nil)
     }
     
-    func runRepeatAniamtion(duration: Double = 1, repeatCount: Float = 100, animation: CAAnimation...) -> Void {
+    func runRepeatAniamtion(duration: Double = 2, repeatCount: Float = 100, animation: CAAnimation...) -> Void {
         
         let animateGroup = CAAnimationGroup()
         animateGroup.animations = animation
         
-        animateGroup.autoreverses = true
+//        animateGroup.autoreverses = true
         animateGroup.duration = duration
         animateGroup.repeatCount = repeatCount
+//        animateGroup.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
         hatImage.layer.add(animateGroup, forKey: nil)
     }
