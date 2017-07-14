@@ -32,15 +32,15 @@ class CoreAnimationViewController: UIViewController {
     //position              CGPoint
     //position.x            CGFloat
     //position.y            CGFloat
-    //transform.scale       xx      .x + .y
+    //transform.scale       CGFloat  equal .x + .y + .z
     //transform.scale.x     CGFloat
     //transform.scale.y     CGFloat
     //transform.scale.z     invalid
-    //transform.translation     xx   equal .x
+    //transform.translation     CGSize   equal .x + .y
     //transform.translation.x   CGFloat
     //transform.translation.y   CGFloat
     //transform.translation.z   invalid
-    //transform.rotation        xx   equal  .z
+    //transform.rotation        Float.pi  equal  .z
     //transform.rotation.x      Float.pi
     //transform.rotation.y      Float.pi
     //transform.rotation.z      Float.pi
@@ -63,11 +63,21 @@ class CoreAnimationViewController: UIViewController {
     }
 
     @IBAction func ca2(_ sender: Any) {
+        let xAnimation = aniamtionWithPath("transform.translation.x",  fromValue: nil, toValue: 50.0)
+        let yAnimation = aniamtionWithPath("transform.translation.y", fromValue: nil, toValue: -100.0)
+        let xScaleAnimation = aniamtionWithPath("transform.scale.x",  fromValue: nil, toValue: 0.8)
+        let yScaleAnimation = aniamtionWithPath("transform.scale.y", fromValue: nil, toValue: 0.8)
+        let conerAnimation = aniamtionWithPath("cornerRadius", fromValue: nil, toValue: 40.0)
+        let xRotationAnimation = aniamtionWithPath("transform.rotation.x",  fromValue: nil, toValue: Float.pi/3)
+        let yRotationAnimation = aniamtionWithPath("transform.rotation.y",  fromValue: nil, toValue: Float.pi/6)
         
+        runAniamtion(animation:  xAnimation, yAnimation, xScaleAnimation, yScaleAnimation, conerAnimation, xRotationAnimation, yRotationAnimation)
     }
 
     @IBAction func ca3(_ sender: Any) {
-        
+        let xRotationAnimation = aniamtionWithPath("transform.rotation",  fromValue: -Float.pi/3, toValue: Float.pi/3)
+        let xScaleAnimation = aniamtionWithPath("transform.scale",  fromValue: nil, toValue: 0.4)
+        runRepeatAniamtion(animation:xRotationAnimation,  xScaleAnimation)
     }
     
     @IBAction func ca4(_ sender: Any) {
@@ -86,6 +96,7 @@ class CoreAnimationViewController: UIViewController {
     @IBAction func ca7(_ sender: Any) {
         
         bkView.layer.removeAllAnimations()
+        hatImage.layer.removeAllAnimations()
     }
     
     
@@ -109,6 +120,18 @@ class CoreAnimationViewController: UIViewController {
         animateGroup.fillMode = kCAFillModeForwards
         
         bkView.layer.add(animateGroup, forKey: nil)
+    }
+    
+    func runRepeatAniamtion(duration: Double = 1, repeatCount: Float = 100, animation: CAAnimation...) -> Void {
+        
+        let animateGroup = CAAnimationGroup()
+        animateGroup.animations = animation
+        
+        animateGroup.autoreverses = true
+        animateGroup.duration = duration
+        animateGroup.repeatCount = repeatCount
+        
+        hatImage.layer.add(animateGroup, forKey: nil)
     }
     
     
