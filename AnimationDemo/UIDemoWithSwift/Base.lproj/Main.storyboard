@@ -37,6 +37,14 @@
                                     <segue destination="uu2-E8-MNb" kind="presentation" id="ovO-pP-tqd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbP-9N-eRJ">
+                                <rect key="frame" x="86" y="193" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Bezier"/>
+                                <connections>
+                                    <segue destination="bOv-Ha-RgL" kind="presentation" id="VdC-Gz-yg7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -241,6 +249,120 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFE-5D-8nD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1151.2" y="-856.82158920539734"/>
+        </scene>
+        <!--Bezier Path View Controller-->
+        <scene sceneID="OVO-fi-1R5">
+            <objects>
+                <viewController id="bOv-Ha-RgL" customClass="BezierPathViewController" customModule="UIDemoWithSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WRG-Ct-5An"/>
+                        <viewControllerLayoutGuide type="bottom" id="rDV-AY-qrQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3pL-d9-JvF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ks-B4-eOB">
+                                <rect key="frame" x="271" y="54" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Bezier1"/>
+                                <connections>
+                                    <action selector="bezier1:" destination="bOv-Ha-RgL" eventType="touchUpInside" id="L5h-gf-hvY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dx-Sg-Km8">
+                                <rect key="frame" x="270" y="101" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Bezier2"/>
+                                <connections>
+                                    <action selector="bezier2:" destination="bOv-Ha-RgL" eventType="touchUpInside" id="KaL-aE-o1m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLj-2p-zg8">
+                                <rect key="frame" x="271" y="153" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Bezier3"/>
+                                <connections>
+                                    <action selector="bezier3:" destination="bOv-Ha-RgL" eventType="touchUpInside" id="HkQ-ZW-lHA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMk-ZE-PAb">
+                                <rect key="frame" x="271" y="199" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Bezier4"/>
+                                <connections>
+                                    <action selector="bezier4:" destination="bOv-Ha-RgL" eventType="touchUpInside" id="EQI-nB-Mr2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CR4-1V-8L6">
+                                <rect key="frame" x="270" y="332" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Bezier5"/>
+                                <connections>
+                                    <action selector="bezier5:" destination="bOv-Ha-RgL" eventType="touchUpInside" id="s4n-w0-ozd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFY-Oz-MsB">
+                                <rect key="frame" x="271" y="385" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Bezier6"/>
+                                <connections>
+                                    <action selector="bezier6:" destination="bOv-Ha-RgL" eventType="touchUpInside" id="oHn-xe-UJT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZF-nU-uKk">
+                                <rect key="frame" x="270" y="500" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Bezier8"/>
+                                <connections>
+                                    <action selector="bezier8:" destination="bOv-Ha-RgL" eventType="touchUpInside" id="2bD-4T-CSH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH0-uI-ykZ">
+                                <rect key="frame" x="271" y="442" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Bezier7"/>
+                                <connections>
+                                    <action selector="bezier7:" destination="bOv-Ha-RgL" eventType="touchUpInside" id="0fI-PD-vyN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCA-dD-aOb">
+                                <rect key="frame" x="271" y="550" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Bezier9"/>
+                                <connections>
+                                    <action selector="bezier9:" destination="bOv-Ha-RgL" eventType="touchUpInside" id="Yst-M5-3mK"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tKF-Wd-CMA" customClass="BezierView" customModule="UIDemoWithSwift" customModuleProvider="target">
+                                <rect key="frame" x="13" y="376" width="250" height="250"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bAV-mW-lHp">
+                                <rect key="frame" x="12" y="69" width="250" height="250"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rM-6i-uhM">
+                                <rect key="frame" x="329" y="577" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Exit"/>
+                                <connections>
+                                    <action selector="exit:" destination="bOv-Ha-RgL" eventType="touchUpInside" id="9Qb-6t-Jdl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="bezierView" destination="tKF-Wd-CMA" id="isj-8v-dWK"/>
+                        <outlet property="commonView" destination="bAV-mW-lHp" id="MLU-S2-aUA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="syH-fw-uvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1519.2" y="-202.84857571214394"/>
         </scene>
     </scenes>
     <resources>
