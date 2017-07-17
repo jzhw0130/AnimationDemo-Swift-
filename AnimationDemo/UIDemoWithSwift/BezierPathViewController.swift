@@ -95,13 +95,28 @@ class BezierPathViewController: UIViewController {
     }
     
     @IBAction func bezier7(_ sender: Any) {
+        
+        let bezierArc = UIBezierPath(arcCenter: CGPoint.init(x: self.commonView.frame.size.width/2, y: self.commonView.frame.size.height/2), radius: rectWidth/2, startAngle: 0, endAngle: CGFloat(Float.pi*2), clockwise: true)
+        
+        strokeWithPath(bezierArc)
+        
+        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
+        animation.duration = 4.0
+        animation.toValue = Float.pi
+        animation.repeatCount = Float(NSNotFound)
+        animation.autoreverses = true
+        
+        self.commonView.layer.add(animation, forKey: nil)
+        
     }
     
     @IBAction func bezier8(_ sender: Any) {
+        
+        
     }
     
     @IBAction func bezier9(_ sender: Any) {
-        
+        removeShapeLayer()
     }
     
 
@@ -111,19 +126,33 @@ class BezierPathViewController: UIViewController {
     }
     
     
-    func strokeWithPath(_ path: UIBezierPath) -> Void {
+    func strokeWithPath(_ path: UIBezierPath) {
         
         removeShapeLayer()
         
         let subLayer = CAShapeLayer()
         subLayer.lineWidth = 5.0
-        subLayer.fillColor = UIColor.red.cgColor
+        subLayer.fillColor = UIColor.clear.cgColor
         subLayer.strokeColor = UIColor.blue.cgColor
         
         subLayer.path = path.cgPath
         
-        self.commonView.layer.addSublayer(subLayer)
+        addAnimationForShapeLayer(subLayer)
         
+        self.commonView.layer.addSublayer(subLayer)
+
+    }
+    
+    func addAnimationForShapeLayer(_ shapeLayer: CAShapeLayer) -> Void {
+        
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = 0.0
+        animation.toValue = 1.0
+        animation.duration = 4.0
+        animation.repeatCount = Float(NSNotFound)
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        shapeLayer.add(animation, forKey: "strokeEndAniamtion")
     }
     
     func removeShapeLayer() -> Void {
