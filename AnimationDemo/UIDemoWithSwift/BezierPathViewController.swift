@@ -112,6 +112,36 @@ class BezierPathViewController: UIViewController {
     
     @IBAction func bezier8(_ sender: Any) {
         
+        let frame = self.commonView.bounds
+        
+        let circle = CALayer()
+        circle.backgroundColor = UIColor.orange.cgColor
+        circle.bounds = CGRect(x: 0, y: 0, width: 15, height: 15)
+        circle.position = CGPoint(x: frame.size.width/2, y: frame.size.height*0.8)
+        circle.cornerRadius = 7.5
+        circle.transform = CATransform3DMakeScale(0.01, 0.01, 0.01)
+        
+        
+        let animation = CABasicAnimation(keyPath: "transform.scale")
+        animation.duration = 1.0
+        animation.fromValue = 1.0
+        animation.toValue = 0.1
+        animation.repeatCount = Float(NSNotFound)
+        
+        circle.add(animation, forKey: nil)
+        
+        
+        let replicatorLayer = CAReplicatorLayer()
+        replicatorLayer.frame = CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: frame.size.height)
+        replicatorLayer.instanceCount = 15
+        replicatorLayer.instanceDelay = 1.0/15
+        replicatorLayer.instanceTransform = CATransform3DMakeRotation(CGFloat(Float.pi*2/15), 0, 0, 1)
+        
+        
+        replicatorLayer.addSublayer(circle)
+
+        self.commonView.layer.addSublayer(replicatorLayer)
+        
         
     }
     
